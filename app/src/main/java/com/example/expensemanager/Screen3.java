@@ -3,14 +3,12 @@ package com.example.expensemanager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
-    TextView ed1;
+public class Screen3 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_screen3);
     }
 }

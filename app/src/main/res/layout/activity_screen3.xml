@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="#869597"
     android:backgroundTint="#ffffff"
-    tools:context=".MainActivity">
+    tools:context=".Screen3">
 
     <TextView
         android:layout_width="match_parent"
