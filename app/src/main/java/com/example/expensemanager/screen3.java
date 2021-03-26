@@ -4,10 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.expensemanager.R;
 
 import java.util.ArrayList;
+
+import static com.example.expensemanager.AddItem.arr2;
+import static com.example.expensemanager.AddItem.arr4;
+
 
 public class screen3 extends AppCompatActivity {
 
@@ -23,52 +28,41 @@ public class screen3 extends AppCompatActivity {
     double food_sum;
     double household_sum;
     double others_sum;
-
-
-
-    ArrayList<String> category;
-    ArrayList<Integer> expense;
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_screen3);
 
-        shopping.findViewById(R.id.shopping);
-        entertainment.findViewById(R.id.entertainment);
-        travelling.findViewById(R.id.travel);
-        food.findViewById(R.id.food);
-        household.findViewById(R.id.household);
-        others.findViewById(R.id.others);
+        shopping=findViewById(R.id.shopping);
+        travelling=findViewById(R.id.travel);
+        entertainment=findViewById(R.id.entertainment);
+        food=findViewById(R.id.food);
+        household=findViewById(R.id.household);
+        others=findViewById(R.id.others);
 
-        category=new ArrayList<>();
-        expense=new ArrayList<>();
-        category = getIntent().getStringArrayListExtra("");
-        expense = getIntent().getIntegerArrayListExtra("");
 
-        for (int i = 0; i < category.size(); i++)
+        //category = getIntent().getStringArrayListExtra("");
+        //expense = getIntent().getIntegerArrayListExtra("");
+
+        for (int i = 0; i < arr4.size(); i++)
 
         {
-            if (category.get(i) == "shopping") {
-                shopping_sum = shopping_sum + expense.get(i);
-            } else if (category.get(i) == "leisure") {
-                entertainment_sum = entertainment_sum + expense.get(i);
+            if (arr4.get(i).equals("SHOPPING")) {
+                shopping_sum = shopping_sum + Integer.parseInt(arr2.get(i));
+            }  if (arr4.get(i).equals("ENTERTAINMENT")) {
+                entertainment_sum = entertainment_sum + Integer.parseInt(arr2.get(i));
 
-            } else if (category.get(i) == "travelling") {
-                travelling_sum = travelling_sum + expense.get(i);
+            }  if (arr4.get(i).equals("TRAVEL")) {
+                travelling_sum = travelling_sum + Integer.parseInt(arr2.get(i));
 
-            } else if (category.get(i) == "food") {
-                food_sum = food_sum + expense.get(i);
+            }  if (arr4.get(i).equals("FOOD")) {
+                food_sum = food_sum + Integer.parseInt(arr2.get(i));
 
-            } else if (category.get(i) == "household") {
-                household_sum = household_sum + expense.get(i);
+            }  if (arr4.get(i).equals("HOUSEHOLD")) {
+                household_sum = household_sum + Integer.parseInt(arr2.get(i));
 
-            } else {
-                others_sum = others_sum + expense.get(i);
+            } if (arr4.get(i).equals("OTHERS")){
+                others_sum = others_sum + Integer.parseInt(arr2.get(i));
 
             }
 
@@ -76,9 +70,12 @@ public class screen3 extends AppCompatActivity {
 
 
 
-        shopping.setText(Double.toString(shopping_sum));
-        entertainment.setText(Double.toString(entertainment_sum));
-        travelling.setText(Double.toString(travelling_sum));
-        food.setText(Double.toString(food_sum));
-        household.setText(Double.toString(household_sum));
-        others.setText(Double.toString(others_sum));}}
+        Toast.makeText(screen3.this,""+shopping_sum, Toast.LENGTH_SHORT).show();
+        shopping.setText(""+shopping_sum);
+        entertainment.setText(""+entertainment_sum);
+        travelling.setText(""+travelling_sum);
+        food.setText(""+food_sum);
+        household.setText(""+household_sum);
+        others.setText(""+others_sum);
+    }
+}
