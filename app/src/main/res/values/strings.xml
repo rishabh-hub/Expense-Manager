@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Expense Manager</string>
+    <string-array name="Expense">
+        <item>Expense</item>
+        <item>Income</item>
+    </string-array>
+    <string-array name="Tags">
+        <item>TRAVEL</item>
+        <item>FOOD</item>
+        <item>ENTERTAINMENT</item>
+    </string-array>
 </resources>
