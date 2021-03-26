@@ -35,17 +35,18 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="25dp"
                 android:paddingTop="25dp"
-                android:text="Hello, Shrish"
+                android:text="Hi, There!"
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/Counter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_regular"
                 android:paddingLeft="25dp"
                 android:paddingTop="5dp"
-                android:text="Your Balance: ₹ 1,99,900"
+                android:text="Your Balance:"
                 android:textColor="#000000"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -61,6 +62,15 @@
 
 
             />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_baseline_remove_circle_24" />
+
+
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -68,14 +78,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="100dp"
         android:clickable="true"
         android:gravity="bottom"
         android:tint="@color/white"
         app:backgroundTint="#FA8334"
 
 
+
+
         app:srcCompat="@android:drawable/ic_input_add" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/ActionButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="30dp"
+        android:clickable="true"
+        app:backgroundTint="#FA8334"
+        app:srcCompat="@drawable/ic_baseline_library_books_24" />
 <!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
 <!--            android:id="@+id/floatingActionButton2"-->
 <!--            android:layout_width="match_parent"-->
@@ -85,6 +109,7 @@
 <!--            android:clickable="true"-->
 <!--            app:backgroundTint="#FA8334"-->
 <!--            app:srcCompat="@android:drawable/ic_input_add" />-->
+
 
 
 
