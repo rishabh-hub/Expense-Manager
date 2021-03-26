@@ -25,6 +25,7 @@ import static com.example.expensemanager.AddItem.arr2;
 import static com.example.expensemanager.AddItem.arr3;
 import static com.example.expensemanager.AddItem.arr4;
 
+
 public class MainActivity extends AppCompatActivity implements java.io.Serializable {
     RecyclerView recyclerView ;
     FloatingActionButton btn1;
@@ -55,13 +56,17 @@ public class MainActivity extends AppCompatActivity implements java.io.Serializa
         String NAME;
         String AMT;
 
+
+
+
         btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,screen3.class);
-                startActivity(intent);
-            }
-        });
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this, screen3.class);
+                    startActivity(intent);
+                }
+            });
+
 
 
 
@@ -107,10 +112,10 @@ public class MainActivity extends AppCompatActivity implements java.io.Serializa
 
 
 
-            Collections.reverse(arr1);
-            Collections.reverse(arr2);
-            Collections.reverse(arr3);
-            Collections.reverse(arr4);
+//            Collections.reverse(arr1);
+//            Collections.reverse(arr2);
+//            Collections.reverse(arr3);
+//            Collections.reverse(arr4);
 
 
 

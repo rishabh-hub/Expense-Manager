@@ -58,7 +58,7 @@
                 </ImageView>
 
                 <TextView
-                    android:layout_width="115dp"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:fontFamily="sans-serif-medium"
@@ -120,7 +120,7 @@
                 </ImageView>
 
                 <TextView
-                    android:layout_width="115dp"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:fontFamily="sans-serif-medium"
@@ -180,13 +180,13 @@
                 </ImageView>
 
                 <TextView
-                    android:layout_width="115dp"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+
                     android:fontFamily="sans-serif-medium"
                     android:text="Food &amp; Drinks"
                     android:textColor="#1b1b1b"
-                    android:textAlignment="gravity"
+                    android:textAlignment="center"
                     android:textSize="18dp" />
 
                 <TextView
