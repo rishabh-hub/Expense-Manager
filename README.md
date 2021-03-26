@@ -9,9 +9,9 @@ Expanse Manager is a **MONEY TRACKING** app which will help you save your money 
 
 
   <p float="left">
-  <img src="https://github.com/rishabh-hub/Expense-Manager/blob/master/ss1.jpeg" width="300" hspace="10" />
-  <img src="https://github.com/rishabh-hub/Expense-Manager/blob/master/ss3.jpeg" width="300" /> 
-  <img src="https://github.com/rishabh-hub/Expense-Manager/blob/master/ss2.jpeg" width="300"hspace="10"  />
+  <img src="https://github.com/rishabh-hub/Expense-Manager/blob/master/s1.jpeg" width="300" hspace="10" />
+  <img src="https://github.com/rishabh-hub/Expense-Manager/blob/master/s2.jpeg" width="300" /> 
+  <img src="https://github.com/rishabh-hub/Expense-Manager/blob/master/s3.jpeg" width="300"hspace="10"  />
 </p>
   
 
