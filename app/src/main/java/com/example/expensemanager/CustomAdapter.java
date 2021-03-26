@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
     private final ArrayList<String> DataSet1;
-    private final String[] localDataSet;
+    private final ArrayList<String> localDataSet;
 
 
     /**
@@ -56,7 +56,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
      * @param str
      */
     public CustomAdapter(ArrayList<String> dataSet, ArrayList<String> str) {
-        localDataSet = dataSet.toArray(new String[0]);
+        localDataSet = dataSet;
         DataSet1 = str;
 
 
@@ -80,15 +80,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.getTextView().setText(localDataSet[position]);
+        viewHolder.getTextView().setText(localDataSet.get(position));
         viewHolder.getTextView2().setText(DataSet1.get(position));
-        viewHolder.cardView.setCardBackgroundColor(ColorStateList.valueOf(Color.parseColor("#FDC6C4")));
+        viewHolder.cardView.setCardBackgroundColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return localDataSet.length;
+        return DataSet1.size();
     }
 }
 

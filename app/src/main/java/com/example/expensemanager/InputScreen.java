@@ -15,31 +15,36 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class InputScreen extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class InputScreen extends AppCompatActivity  {
     Spinner spinner1;
     Spinner spinner2;
     FloatingActionButton btn2;
     EditText et1;
     EditText Amount1;
-    MainActivity activity=new MainActivity();
-    Intent intent ;
+    MainActivity activity = new MainActivity();
+    Intent intent;
     static InputScreen inputScreen;
 
-    public static InputScreen getInstance(){
-        return   inputScreen;
+    public static InputScreen getInstance() {
+        return inputScreen;
     }
+
     public static ArrayList<String> GiveArr() {
         return arr;
 
     }
+
     public static ArrayList<String> GiveStr() {
         return str;
 
     }
+
     public static ArrayList<String> arr;
 
     {
@@ -51,9 +56,6 @@ public class InputScreen extends AppCompatActivity implements AdapterView.OnItem
     {
         str = new ArrayList<String>();
     }
-
-
-
 
 
 
@@ -84,39 +86,33 @@ public class InputScreen extends AppCompatActivity implements AdapterView.OnItem
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
         spinner2.setAdapter(adapter2);
-        TinyDB tinydb=new TinyDB(InputScreen.this);
+
+
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String Name ;
+                String Name;
                 Name = et1.getText().toString();
 
-                String Amt ;
+                String Amt;
                 Amt = Amount1.getText().toString();
-                arr.add("item1");
-                str.add("item2");
 
 
-                if (Name.equals("") || Amt.equals("")){
+                if (Name.equals("") || Amt.equals("")) {
                     Toast.makeText(InputScreen.this, "Fields are Empty", Toast.LENGTH_SHORT).show();
 
-                }
-                else{
+                } else {
                     arr.add(Name);
                     str.add(Amt);
+//                    MainActivity.y1.add(Name);
+//                    MainActivity.y2.add(Amt);
 
                     et1.setText(null);
                     Amount1.setText(null);
+//                    saveData();
 
 
 
-                    tinydb.putListString("Name",arr);
-                    tinydb.putListString("Amt",str);
-
-
-
-
-//                    Toast.makeText(InputScreen.this, Amt+Name, Toast.LENGTH_SHORT).show();
 //                    SharedPreferences SpName =getSharedPreferences("Name",MODE_PRIVATE);
 //                    SharedPreferences.Editor edName=SpName.edit();
 //                    edName.putString("name",Name);
@@ -125,12 +121,37 @@ public class InputScreen extends AppCompatActivity implements AdapterView.OnItem
 //                    SharedPreferences.Editor edAmt=SpAmt.edit();
 //                    edAmt.putString("Amt",Amt);
 //                    edAmt.apply();
+                    SharedPreferences Sp = getSharedPreferences("App", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = Sp.edit();
+                    Gson gson = new Gson();
+                    String json = gson.toJson(arr);
+                    String json1 = gson.toJson(str);
 
-                    Intent intent1 = new Intent(InputScreen.this, MainActivity.class);
-//                    intent1.putExtra("Name1",Name);
-//                    intent1.putExtra("amt1",Amt);
-                    intent1.putExtra("Id1","1");
-                    startActivity(intent1);
+//                    editor.remove("name").commit();
+//                    editor.remove("Amt").commit();
+                    editor.putString("name", json);
+                    editor.putString("Amt",json1);
+                    editor.apply();
+
+
+
+
+//                    try {
+//                        editor.putString("name", ObjectSerializer.serialize(arr));
+//                        editor.putString("Amt", ObjectSerializer.serialize(str));
+//
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                    editor.commit();
+//                }
+
+
+                    Intent intent = new Intent(InputScreen.this, MainActivity.class);
+                    intent.putExtra("Name1", Name);
+                    intent.putExtra("amt1", Amt);
+                    intent.putExtra("Id1", "1");
+                    startActivity(intent);
 
                 }
 
@@ -157,8 +178,6 @@ public class InputScreen extends AppCompatActivity implements AdapterView.OnItem
 //
 
 
-
-
 //                Bundle args2 = new Bundle();
 
 //                args.putSerializable("ARRAYLIST2",(Serializable)arr);
@@ -168,31 +187,23 @@ public class InputScreen extends AppCompatActivity implements AdapterView.OnItem
 //                Bundle args3 = new Bundle();
 //                args1.putSerializable("ARRAYLIST3",(Serializable)str);
 //                intent1.putExtra("BUNDLE3",args3);
-
-
-
-
-
-
-
             }
+
+
+
         });
 
 
-
-
-
-        }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        // An item was selected. You can retrieve the selected item using
-
-         //parent.getItemAtPosition(position).toString();
+    }private void saveData(){
+        SharedPreferences Sp =getSharedPreferences("App",MODE_PRIVATE);
+        SharedPreferences.Editor editor =Sp.edit();
+        Gson gson =new Gson();
+        String json =gson.toJson(arr);
+        String json1=gson.toJson(str);
+        editor.putString("name",json);
+        editor.putString("Amt",json1);
+        editor.apply();
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
 
-    }
 }
