@@ -5,11 +5,12 @@
         <item>Income</item>
     </string-array>
     <string-array name="Tags">
+        <item>OTHERS</item>
         <item>TRAVEL</item>
         <item>FOOD</item>
         <item>ENTERTAINMENT</item>
         <item>SHOPPING</item>
         <item>HOUSEHOLD</item>
-        <item>OTHERS</item>
+
     </string-array>
 </resources>

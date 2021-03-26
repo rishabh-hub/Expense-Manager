@@ -11,6 +11,7 @@ import com.example.expensemanager.R;
 import java.util.ArrayList;
 
 import static com.example.expensemanager.AddItem.arr2;
+import static com.example.expensemanager.AddItem.arr3;
 import static com.example.expensemanager.AddItem.arr4;
 
 
@@ -28,6 +29,8 @@ public class screen3 extends AppCompatActivity {
     double food_sum;
     double household_sum;
     double others_sum;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,38 +47,60 @@ public class screen3 extends AppCompatActivity {
         //category = getIntent().getStringArrayListExtra("");
         //expense = getIntent().getIntegerArrayListExtra("");
 
-        for (int i = 0; i < arr4.size(); i++)
 
-        {
-            if (arr4.get(i).equals("SHOPPING")) {
-                shopping_sum = shopping_sum + Integer.parseInt(arr2.get(i));
-            }  if (arr4.get(i).equals("ENTERTAINMENT")) {
-                entertainment_sum = entertainment_sum + Integer.parseInt(arr2.get(i));
 
-            }  if (arr4.get(i).equals("TRAVEL")) {
-                travelling_sum = travelling_sum + Integer.parseInt(arr2.get(i));
+        shopping_sum=0;
+        entertainment_sum=0;
+        travelling_sum=0;
+        food_sum=0;
+        household_sum=0;
+        others_sum=0;
 
-            }  if (arr4.get(i).equals("FOOD")) {
-                food_sum = food_sum + Integer.parseInt(arr2.get(i));
 
-            }  if (arr4.get(i).equals("HOUSEHOLD")) {
-                household_sum = household_sum + Integer.parseInt(arr2.get(i));
 
-            } if (arr4.get(i).equals("OTHERS")){
-                others_sum = others_sum + Integer.parseInt(arr2.get(i));
+
+            for (int i = 0; i < arr4.size(); i++) {
+                if (arr3.get(i).equals("Expense")) {
+                    if (arr4.get(i).equals("SHOPPING")) {
+                        shopping_sum = shopping_sum + Integer.parseInt(arr2.get(i));
+                    }
+                    if (arr4.get(i).equals("ENTERTAINMENT")) {
+                        entertainment_sum = entertainment_sum + Integer.parseInt(arr2.get(i));
+
+                    }
+                    if (arr4.get(i).equals("TRAVEL")) {
+                        travelling_sum = travelling_sum + Integer.parseInt(arr2.get(i));
+
+                    }
+                    if (arr4.get(i).equals("FOOD")) {
+                        food_sum = food_sum + Integer.parseInt(arr2.get(i));
+
+                    }
+                    if (arr4.get(i).equals("HOUSEHOLD")) {
+                        household_sum = household_sum + Integer.parseInt(arr2.get(i));
+
+                    }
+                    if (arr4.get(i).equals("OTHERS")) {
+                        others_sum = others_sum + Integer.parseInt(arr2.get(i));
+
+                    }
 
             }
+
 
         }
 
 
 
-        Toast.makeText(screen3.this,""+shopping_sum, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(screen3.this,""+shopping_sum, Toast.LENGTH_SHORT).show();
+
         shopping.setText(""+shopping_sum);
         entertainment.setText(""+entertainment_sum);
         travelling.setText(""+travelling_sum);
         food.setText(""+food_sum);
         household.setText(""+household_sum);
         others.setText(""+others_sum);
+
+
     }
 }
