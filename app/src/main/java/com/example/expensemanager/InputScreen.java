@@ -194,7 +194,8 @@ public class InputScreen extends AppCompatActivity  {
         });
 
 
-    }private void saveData(){
+    }
+    /*private void saveData(){
         SharedPreferences Sp =getSharedPreferences("App",MODE_PRIVATE);
         SharedPreferences.Editor editor =Sp.edit();
         Gson gson =new Gson();
@@ -203,7 +204,7 @@ public class InputScreen extends AppCompatActivity  {
         editor.putString("name",json);
         editor.putString("Amt",json1);
         editor.apply();
-    }
+    }*/
 
 
 }
