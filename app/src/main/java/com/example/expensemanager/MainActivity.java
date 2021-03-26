@@ -55,6 +55,14 @@ public class MainActivity extends AppCompatActivity implements java.io.Serializa
         String NAME;
         String AMT;
 
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,screen3.class);
+                startActivity(intent);
+            }
+        });
+
 
 
 //        y1 = new ArrayList<String>(3);
