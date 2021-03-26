@@ -16,10 +16,19 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+
+import static com.example.expensemanager.AddItem.arr1;
+import static com.example.expensemanager.AddItem.arr2;
+
+import static com.example.expensemanager.AddItem.arr3;
+import static com.example.expensemanager.AddItem.arr4;
+import static com.example.expensemanager.MainActivity.y1;
 
 public class InputScreen extends AppCompatActivity  {
     Spinner spinner1;
@@ -27,13 +36,13 @@ public class InputScreen extends AppCompatActivity  {
     FloatingActionButton btn2;
     EditText et1;
     EditText Amount1;
-    MainActivity activity = new MainActivity();
     Intent intent;
-    static InputScreen inputScreen;
+    AddItem additem =new AddItem();
+//    static InputScreen inputScreen;
 
-    public static InputScreen getInstance() {
-        return inputScreen;
-    }
+//    public static InputScreen getInstance() {
+//        return this;
+//    }
 
     public static ArrayList<String> GiveArr() {
         return arr;
@@ -69,7 +78,7 @@ public class InputScreen extends AppCompatActivity  {
         Amount1 = findViewById(R.id.amount1);
         et1 = findViewById(R.id.et1);
         intent = getIntent();
-        inputScreen = this;
+//        inputScreen = this;
 
 
 
@@ -97,15 +106,26 @@ public class InputScreen extends AppCompatActivity  {
                 String Amt;
                 Amt = Amount1.getText().toString();
 
+                String type = spinner1.getSelectedItem().toString();
+                String tag = spinner2.getSelectedItem().toString();
+
+
 
                 if (Name.equals("") || Amt.equals("")) {
                     Toast.makeText(InputScreen.this, "Fields are Empty", Toast.LENGTH_SHORT).show();
 
-                } else {
-                    arr.add(Name);
-                    str.add(Amt);
+                }
+                else {
+//                    arr.add(Name);
+//                    str.add(Amt);
 //                    MainActivity.y1.add(Name);
 //                    MainActivity.y2.add(Amt);
+
+                    arr1.add(Name);
+                    arr2.add(Amt);
+                    arr3.add(type);
+                    arr4.add(tag);
+//                    Toast.makeText(InputScreen.this,y1.get(0), Toast.LENGTH_SHORT).show();
 
                     et1.setText(null);
                     Amount1.setText(null);
@@ -124,13 +144,18 @@ public class InputScreen extends AppCompatActivity  {
                     SharedPreferences Sp = getSharedPreferences("App", MODE_PRIVATE);
                     SharedPreferences.Editor editor = Sp.edit();
                     Gson gson = new Gson();
-                    String json = gson.toJson(arr);
-                    String json1 = gson.toJson(str);
+                    String json1 = gson.toJson(arr1);
+                    String json2 = gson.toJson(arr2);
+                    String json3 = gson.toJson(arr3);
+                    String json4 = gson.toJson(arr4);
 
 //                    editor.remove("name").commit();
 //                    editor.remove("Amt").commit();
-                    editor.putString("name", json);
-                    editor.putString("Amt",json1);
+                    editor.putString("name", json1);
+                    editor.putString("Amt",json2);
+                    editor.putString("type",json3);
+                    editor.putString("tag",json4);
+
                     editor.apply();
 
 
@@ -194,8 +219,7 @@ public class InputScreen extends AppCompatActivity  {
         });
 
 
-    }
-    /*private void saveData(){
+    }private void saveData(){
         SharedPreferences Sp =getSharedPreferences("App",MODE_PRIVATE);
         SharedPreferences.Editor editor =Sp.edit();
         Gson gson =new Gson();
@@ -204,7 +228,30 @@ public class InputScreen extends AppCompatActivity  {
         editor.putString("name",json);
         editor.putString("Amt",json1);
         editor.apply();
-    }*/
+    }
+    private void loadData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("App", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("name", null);
+//        Toast.makeText(MainActivity.this, json, Toast.LENGTH_SHORT).show();
+
+        arr1 = gson.fromJson(json,
+                new TypeToken<List<String>>() {
+                }.getType());
+//        Type type = new TypeToken<ArrayList<String>>() {}.getType();
+        String json1 = sharedPreferences.getString("Amt", null);
+        arr2 = gson.fromJson(json1,
+                new TypeToken<List<String>>() {
+                }.getType());
+        String json2 = sharedPreferences.getString("type", null);
+        arr3 = gson.fromJson(json2,
+                new TypeToken<List<String>>() {
+                }.getType());
+        String json3 = sharedPreferences.getString("tag", null);
+        arr4 = gson.fromJson(json3,
+                new TypeToken<List<String>>() {
+                }.getType());
+    }
 
 
 }
