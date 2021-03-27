@@ -77,6 +77,10 @@ public class MainActivity extends AppCompatActivity implements java.io.Serializa
 //        y2 = InputScreen.getInstance().GiveStr();
 //        y1 = InputScreen.getInstance().GiveArr();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        SharedPreferences sharedPreferences = getSharedPreferences("App", MODE_PRIVATE);
+        String json4 = sharedPreferences.getString("name", null);
+        if (json4 != null){loadData();}
+
 //        double c2;
 //        c2= AddItem.count;
 //        AMT=Double.toString(c2);
